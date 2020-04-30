@@ -1,0 +1,48 @@
+{
+  "name": "cucumber-ts-starter",
+  "version": "3.3.0",
+  "description": "Starter project to write and debug cucumber-js features in TypeScript language",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && npm run format && npm run lint && tsc ",
+    "cucumber": "./node_modules/cucumber/bin/cucumber-js features/**/*.feature --foo=bar --logLevel=error --require 'world/custom-world.ts' --require 'step-definitions/**/*.ts' --require 'hooks/**/*.ts'  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format json:reports/cucumber-report.json --format summary --format progress-bar --format node_modules/cucumber-pretty",
+    "snippets": "./node_modules/cucumber/bin/cucumber-js features/**/*.feature --dry-run --require 'world/custom-world.ts' --require 'step-definitions/**/*.ts' --require 'hooks/**/*.ts'  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format snippets --tags @only",
+    "eslint-fix": "eslint ./ --ext .js,.ts,.tsx --fix",
+    "eslint-init": "eslint --init",
+    "format": "prettier --write \"{domains,features,hooks,loggers,reporters,step-definitions}/**/*.{ts,tsx,css,html}\" ",
+    "lint": "eslint ./ --ext .js,.ts,.tsx --format visualstudio --no-color --max-warnings 10 --report-unused-disable-directives",
+    "report": "ts-node reporters/cucumber-html-reporter.ts",
+    "test": "npm run cucumber && npm run report",
+    "tsc-init": "tsc --init",
+    "tsc": "tsc"
+  },
+  "author": "Henri d'Orgeval",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "4.2.11",
+    "@types/cucumber": "6.0.1",
+    "@types/cucumber-html-reporter": "5.0.1",
+    "@types/loglevel": "1.6.3",
+    "@types/minimist": "1.2.0",
+    "@types/node": "13.13.4",
+    "chai": "4.2.0",
+    "cucumber": "6.0.5",
+    "cucumber-html-reporter": "5.2.0",
+    "cucumber-pretty": "6.0.0",
+    "jsome": "2.5.0",
+    "minimist": "1.2.5",
+    "rimraf": "3.0.2",
+    "ts-node": "8.9.1",
+    "typescript": "3.8.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.30.0",
+    "@typescript-eslint/parser": "2.30.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-prettier": "3.1.3",
+    "mem": "6.1.0",
+    "prettier": "2.0.5"
+  }
+}

@@ -1,0 +1,7 @@
+.vscode
+**/vendor/*.js
+build
+coverage
+dist
+node_modules
+package
