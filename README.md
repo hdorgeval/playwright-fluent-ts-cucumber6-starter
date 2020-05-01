@@ -1,5 +1,5 @@
 # cucumber-ts-starter
-Starter project to write and debug cucumber-js features in TypeScript language.
+Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in TypeScript language.
 
 ## After cloning the repo
 
@@ -11,13 +11,17 @@ Starter project to write and debug cucumber-js features in TypeScript language.
 
 ## To debug a scenario in Visual Studio Code
 
-* tag the scenario with `@only` and `@debug`
+* tag the scenario with `@debug`
 * set the breakpoints in the typescript code
 * Start debugging
 
 ## To run only specific scenarios
 
 * tag the scenario(s) with `@only`
+* run script:
+```sh
+npm run only
+```
 
 ## To ignore a scenario
 
