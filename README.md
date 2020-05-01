@@ -1,4 +1,4 @@
-# cucumber-ts-starter
+# playwright-fluent-cucumber-ts-starter
 Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in TypeScript language.
 
 ## After cloning the repo
