@@ -23,6 +23,16 @@ Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in
 npm run only
 ```
 
+## To run scenarios in headfull/live mode
+
+* tag the scenario(s) with `@live`
+* run script:
+```sh
+npm run live
+```
+
+The browser will stay opened at the end of the tests execution.
+
 ## To ignore a scenario
 
 * tag the scenario with `@ignore`
@@ -42,7 +52,7 @@ npm run only
   Given I push "foo" on "bar"
   ```
 
-* tag the scenario with `@only`
+* tag the scenario with `@live` and save the feature file.
 
 * run the npm script:
   ```sh
