@@ -12,3 +12,4 @@ Feature: Fill Form
 @live
 Scenario: Submit a Form
     Given I navigate to "https://reactstrap.github.io"
+    And I open the "Components" page

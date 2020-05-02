@@ -1,6 +1,6 @@
 import { StoryWithProps, Request, stringifyRequest } from 'playwright-fluent';
 import { World } from 'cucumber';
-const urlsToBeIgnored: string[] = ['/fonts/', '/foobar/'];
+const urlsToBeIgnored: string[] = ['/fonts/', '/assets/'];
 
 function shouldKeepRecordedRequest(request: Request): boolean {
   const url = request && request.url();
@@ -9,7 +9,7 @@ function shouldKeepRecordedRequest(request: Request): boolean {
 }
 
 export const reportRecordedRequests: StoryWithProps<World> = async (p, world) => {
-  const recordedRequests = p.getRecordedRequestsTo('/foobar');
+  const recordedRequests = p.getRecordedRequestsTo('/');
   const fileteredRequests = recordedRequests.filter(shouldKeepRecordedRequest).slice(-10);
 
   if (fileteredRequests.length === 0) {
