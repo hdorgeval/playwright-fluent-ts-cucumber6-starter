@@ -1,6 +1,6 @@
 import { StoryWithProps, Request, stringifyRequest } from 'playwright-fluent';
 import { World } from 'cucumber';
-const urlsToBeIgnored: string[] = ['/fonts/', '/assets/'];
+const urlsToBeIgnored: string[] = ['/fonts/', '/assets/', '/cdn/'];
 
 function shouldKeepRecordedRequest(request: Request): boolean {
   const url = request && request.url();
