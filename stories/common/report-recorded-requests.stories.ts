@@ -1,6 +1,13 @@
 import { StoryWithProps, Request, stringifyRequest } from 'playwright-fluent';
 import { World } from 'cucumber';
-const urlsToBeIgnored: string[] = ['/fonts/', '/assets/', '/cdn/'];
+const urlsToBeIgnored: string[] = [
+  '?callback=callback',
+  '/assets/',
+  '/bundle.js',
+  '/cdn/',
+  '/fonts/',
+  'https://www.google-analytics.com',
+];
 
 function shouldKeepRecordedRequest(request: Request): boolean {
   const url = request && request.url();
