@@ -1,4 +1,7 @@
 # playwright-fluent-cucumber-ts-starter
+
+[![Build Status](https://travis-ci.org/hdorgeval/playwright-fluent-ts-cucumber-starter.svg?branch=master)](https://travis-ci.org/hdorgeval/playwright-fluent-ts-cucumber-starter)
+
 Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in TypeScript language.
 
 ## After cloning the repo
