@@ -48,6 +48,11 @@ The browser will stay opened at the end of the tests execution.
 ## To view the html report of the last run
 
 * run the command `npm run report`.
+* the HTML report will automatically include: 
+  - a screenshot whenever an error occured, 
+  - all page errors (uncaught exceptions in the console) if any
+  - all failed requests if any
+  - the last ten requests
 
 ## To create a new step
 
