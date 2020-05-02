@@ -7,6 +7,7 @@ Feature: Fill Form
 Background: Open Form Component
     Given I navigate to "https://reactstrap.github.io"
     And I open the "Components" page
+    And I select the "Form" component
 
 # tag the scenario with @live to run the browser in headfull mode
 #   and keep browser opened when test finishes
@@ -17,5 +18,5 @@ Background: Open Form Component
 #   - in a dedicated before/after hook in the step file where steps are defined
 @live
 Scenario: Submit a Form
-    Given I select the "Form" component
+    Given I input "foo.bar@baz.com" in field "Email"
 

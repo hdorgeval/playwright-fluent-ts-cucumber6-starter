@@ -1,4 +1,5 @@
 import { StoryWithProps } from 'playwright-fluent';
+// prettier-ignore
 
 export const openPage: StoryWithProps<string> = async (p, pageName) => {
   // prettier-ignore
@@ -19,4 +20,23 @@ export const openComponent: StoryWithProps<string> = async (p, componentName) =>
     .withText(componentName);
 
   await p.click(formComponent);
+};
+
+export interface InputTextInFieldProps {
+  fieldLabel: string;
+  text: string;
+}
+export const inputTextInField: StoryWithProps<InputTextInFieldProps> = async (p, props) => {
+  // prettier-ignore
+  const formContainer = p
+    .selector('div.docs-example')
+    .nth(1)
+    .find('form');
+
+  const fieldLabel = formContainer.find('label').withText(props.fieldLabel);
+
+  // prettier-ignore
+  await p
+    .click(fieldLabel)
+    .typeText(props.text);
 };
