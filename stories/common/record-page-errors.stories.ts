@@ -17,6 +17,7 @@ export const reportPageErrors: StoryWithProps<World> = async (p, world) => {
     return;
   }
 
+  await world.attach(`${filteredErrors.length} Page Errors`);
   filteredErrors.forEach((pageError) => {
     const error = `
       ${pageError.name ? pageError.name : ''}

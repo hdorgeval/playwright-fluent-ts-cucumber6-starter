@@ -17,10 +17,12 @@ export const reportFailedRequests: StoryWithProps<World> = async (p, world) => {
     return;
   }
 
+  await world.attach(`${fileteredRequests.length} Failed Request(s)`);
   for (let index = 0; index < fileteredRequests.length; index++) {
     const failedRequest = fileteredRequests[index];
     const stringifiedRequest = await stringifyRequest(failedRequest);
-    world.attach(stringifiedRequest, 'application/json');
+    await world.attach(stringifiedRequest, 'application/json');
+    await world.attach('-------------------------------------------------------');
   }
 
   throw new Error(`There are ${fileteredRequests.length} failed request(s)`);

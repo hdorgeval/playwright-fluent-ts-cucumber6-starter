@@ -16,9 +16,11 @@ export const reportRecordedRequests: StoryWithProps<World> = async (p, world) =>
     return;
   }
 
+  await world.attach('Last 10 Requests');
   for (let index = 0; index < fileteredRequests.length; index++) {
     const request = fileteredRequests[index];
     const stringifiedRequest = await stringifyRequest(request);
-    world.attach(stringifiedRequest, 'application/json');
+    await world.attach(stringifiedRequest, 'application/json');
+    await world.attach('-------------------------------------------------------');
   }
 };
