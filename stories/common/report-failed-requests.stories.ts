@@ -21,6 +21,8 @@ export const reportFailedRequests: StoryWithProps<World> = async (p, world) => {
   for (let index = 0; index < fileteredRequests.length; index++) {
     const failedRequest = fileteredRequests[index];
     const stringifiedRequest = await stringifyRequest(failedRequest);
+    // eslint-disable-next-line no-console
+    console.log(stringifiedRequest);
     await world.attach(stringifiedRequest, 'application/json');
     await world.attach('-------------------------------------------------------');
   }
