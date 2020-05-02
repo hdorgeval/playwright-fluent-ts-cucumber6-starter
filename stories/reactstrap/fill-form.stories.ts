@@ -10,3 +10,13 @@ export const openPage: StoryWithProps<string> = async (p, pageName) => {
 
   await p.click(button);
 };
+
+export const openComponent: StoryWithProps<string> = async (p, componentName) => {
+  // prettier-ignore
+  const formComponent = p
+    .selector('div.docs-sidebar')
+    .find('li')
+    .withText(componentName);
+
+  await p.click(formComponent);
+};
