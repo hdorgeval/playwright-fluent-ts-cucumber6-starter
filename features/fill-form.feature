@@ -19,4 +19,6 @@ Background: Open Form Component
 @live
 Scenario: Submit a Form
     Given I input "foo.bar@baz.com" in field "Email"
+    And I input "don't tel !!" in field "Password"
+    And I select "3" in field "Select"
 

@@ -1,5 +1,5 @@
 // import { expect } from 'chai';
-import { openPage, openComponent, inputTextInField } from '../stories';
+import { openPage, openComponent, inputTextInField, selectOptionsInField } from '../stories';
 import { Before, Given } from 'cucumber';
 import { cast } from 'playwright-fluent';
 
@@ -17,6 +17,10 @@ Given('I select the {string} component', async function (component: string) {
 
 Given('I input {string} in field {string}', async function (text: string, fieldLabel: string) {
   await cast(this.p).runStory(inputTextInField, { fieldLabel, text });
+});
+
+Given('I select {string} in field {string}', async function (options: string, fieldLabel: string) {
+  await cast(this.p).runStory(selectOptionsInField, { fieldLabel, options });
 });
 
 /**
