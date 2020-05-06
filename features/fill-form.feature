@@ -21,4 +21,6 @@ Scenario: Submit a Form
     Given I input "foo.bar@baz.com" in field "Email"
     And I input "don't tel !!" in field "Password"
     And I select "3" in field "Select"
+    And I select "1,3,5" in field "Select Multiple"
+    And I input "bla bla bla" in field "Text Area"
 
