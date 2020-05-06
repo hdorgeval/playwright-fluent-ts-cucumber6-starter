@@ -58,3 +58,14 @@ export const selectOptionsInField: StoryWithProps<SelectOptionsInFieldProps> = a
     .select(...optionsToSelect)
     .inFocused();
 };
+
+//selectRadioButtonOption
+export const selectRadioButtonOption: StoryWithProps<string> = async (p, text) => {
+  // prettier-ignore
+  const formContainer = selector(p).formContainer;
+  const fieldLabel = formContainer.find('input[type="radio"]').parent().withText(text);
+
+  // prettier-ignore
+  await p
+    .click(fieldLabel);
+};
