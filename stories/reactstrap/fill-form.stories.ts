@@ -1,4 +1,4 @@
-import { StoryWithProps, PlaywrightFluent } from 'playwright-fluent';
+import { StoryWithProps, PlaywrightFluent, Story } from 'playwright-fluent';
 // prettier-ignore
 
 const selector = (p: PlaywrightFluent) => {
@@ -32,7 +32,6 @@ export interface InputTextInFieldProps {
   text: string;
 }
 export const inputTextInField: StoryWithProps<InputTextInFieldProps> = async (p, props) => {
-  // prettier-ignore
   const formContainer = selector(p).formContainer;
   const fieldLabel = formContainer.find('label').withText(props.fieldLabel);
 
@@ -47,7 +46,6 @@ export interface SelectOptionsInFieldProps {
   options: string;
 }
 export const selectOptionsInField: StoryWithProps<SelectOptionsInFieldProps> = async (p, props) => {
-  // prettier-ignore
   const formContainer = selector(p).formContainer;
   const fieldLabel = formContainer.find('label').withText(props.fieldLabel);
   const optionsToSelect = props.options.split(',').map((option) => option.trim());
@@ -59,13 +57,24 @@ export const selectOptionsInField: StoryWithProps<SelectOptionsInFieldProps> = a
     .inFocused();
 };
 
-//selectRadioButtonOption
 export const selectRadioButtonOption: StoryWithProps<string> = async (p, text) => {
   // prettier-ignore
   const formContainer = selector(p).formContainer;
   const fieldLabel = formContainer.find('input[type="radio"]').parent().withText(text);
 
-  // prettier-ignore
-  await p
-    .click(fieldLabel);
+  await p.click(fieldLabel);
+};
+
+export const checkOption: StoryWithProps<string> = async (p, text) => {
+  const formContainer = selector(p).formContainer;
+  const fieldInput = formContainer.find('label').withText(text).find('input[type="checkbox"]');
+
+  await p.check(fieldInput);
+};
+
+export const submitForm: Story = async (p) => {
+  const formContainer = selector(p).formContainer;
+  const submitButton = formContainer.find('button').withText('Submit');
+
+  await p.click(submitButton);
 };

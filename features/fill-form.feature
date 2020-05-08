@@ -24,4 +24,6 @@ Scenario: Submit a Form
     And I select "1,3,5" in field "Select Multiple"
     And I input "bla bla bla" in field "Text Area"
     And I select radio button "Option two"
+    And I check option "Check me out"
+    When I submit the form
 

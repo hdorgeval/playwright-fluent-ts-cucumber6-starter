@@ -5,8 +5,10 @@ import {
   inputTextInField,
   selectOptionsInField,
   selectRadioButtonOption,
+  checkOption,
+  submitForm,
 } from '../stories';
-import { Before, Given } from 'cucumber';
+import { Before, Given, When } from 'cucumber';
 import { cast } from 'playwright-fluent';
 
 Given('I navigate to {string}', async function (url: string) {
@@ -31,6 +33,14 @@ Given('I select {string} in field {string}', async function (options: string, fi
 
 Given('I select radio button {string}', async function (optionText: string) {
   await cast(this.p).runStory(selectRadioButtonOption, optionText);
+});
+
+Given('I check option {string}', async function (optionText: string) {
+  await cast(this.p).runStory(checkOption, optionText);
+});
+
+When('I submit the form', async function () {
+  await cast(this.p).runStory(submitForm);
 });
 
 /**
