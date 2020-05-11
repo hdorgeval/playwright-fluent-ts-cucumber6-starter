@@ -26,4 +26,6 @@ Scenario: Submit a Form
     And I select radio button "Option two"
     And I check option "Check me out"
     When I submit the form
+    Then the form should be submitted with "email" = "foo.bar@baz.com" in the Query String
+    
 

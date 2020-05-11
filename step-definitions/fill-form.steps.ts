@@ -7,8 +7,9 @@ import {
   selectRadioButtonOption,
   checkOption,
   submitForm,
+  FormShouldBeSubmittedWithQueryParam,
 } from '../stories';
-import { Before, Given, When } from 'cucumber';
+import { Before, Given, When, Then } from 'cucumber';
 import { cast } from 'playwright-fluent';
 
 Given('I navigate to {string}', async function (url: string) {
@@ -41,6 +42,13 @@ Given('I check option {string}', async function (optionText: string) {
 
 When('I submit the form', async function () {
   await cast(this.p).runStory(submitForm);
+});
+
+Then('the form should be submitted with {string} = {string} in the Query String', async function (
+  key: string,
+  value: string,
+) {
+  await cast(this.p).runStory(FormShouldBeSubmittedWithQueryParam, { key, value });
 });
 
 /**

@@ -1,6 +1,4 @@
-import { StoryWithProps, PlaywrightFluent, Story } from 'playwright-fluent';
-// prettier-ignore
-
+import { StoryWithProps, PlaywrightFluent, Story, toRequestInfo } from 'playwright-fluent';
 const selector = (p: PlaywrightFluent) => {
   return {
     formContainer: p.selector('div.docs-example').nth(1).find('form'),
@@ -77,4 +75,21 @@ export const submitForm: Story = async (p) => {
   const submitButton = formContainer.find('button').withText('Submit');
 
   await p.click(submitButton);
+};
+
+export interface KeyValue {
+  key: string;
+  value: string;
+}
+export const FormShouldBeSubmittedWithQueryParam: StoryWithProps<KeyValue> = async (p, props) => {
+  p.waitForStabilityOf(async () => await p.getRecordedRequestsTo('/?email').length);
+  const submittedRequest = p.getLastRecordedRequestTo('/?email');
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const request = await toRequestInfo(submittedRequest!);
+
+  if (request.queryString[props.key] === props.value) {
+    return;
+  }
+
+  throw new Error(`The url '${request.url}' does not contain '${props.key}=${props.value}'`);
 };
