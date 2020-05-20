@@ -82,7 +82,7 @@ export interface KeyValue {
   value: string;
 }
 export const FormShouldBeSubmittedWithQueryParam: StoryWithProps<KeyValue> = async (p, props) => {
-  p.waitForStabilityOf(async () => await p.getRecordedRequestsTo('/?email').length);
+  await p.waitForStabilityOf(async () => await p.getRecordedRequestsTo('/?email').length);
   const submittedRequest = p.getLastRecordedRequestTo('/?email');
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const request = await toRequestInfo(submittedRequest!);
