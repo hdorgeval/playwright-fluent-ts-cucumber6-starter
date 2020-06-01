@@ -1,4 +1,6 @@
 import { StoryWithProps, PlaywrightFluent, Story, toRequestInfo } from 'playwright-fluent';
+import expect from 'expect';
+
 const selector = (p: PlaywrightFluent) => {
   return {
     formContainer: p.selector('div.docs-example').nth(1).find('form'),
@@ -87,9 +89,5 @@ export const FormShouldBeSubmittedWithQueryParam: StoryWithProps<KeyValue> = asy
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const request = await toRequestInfo(submittedRequest!);
 
-  if (request.queryString[props.key] === props.value) {
-    return;
-  }
-
-  throw new Error(`The url '${request.url}' does not contain '${props.key}=${props.value}'`);
+  expect(request.queryString[props.key]).toBe(props.value);
 };
