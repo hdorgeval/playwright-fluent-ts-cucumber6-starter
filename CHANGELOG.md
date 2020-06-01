@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2020-06-01
+
+### Changed
+
+- update all dependencies
+
+### Breaking Change
+
+- `chai` has been replace by `jest/expect`
+  - to use the `expect` statement :
+  ```js
+  import expect from 'expect';
+  ...
+  expect(true).toBe(true);
+  ```
+
+
 ## [3.4.0] - 2020-05-17
 
 ### Changed
