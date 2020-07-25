@@ -28,4 +28,3 @@ Scenario: Submit a Form
     When I submit the form
     Then the form should be submitted with "email" = "foo.bar@baz.com" in the Query String
     
-
