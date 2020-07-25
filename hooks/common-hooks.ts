@@ -67,9 +67,24 @@ Before({ tags: '@live' }, async function () {
 /**
  * Before each scenario hook
  */
-Before({ tags: '@headfull or @live or @debug' }, async function () {
+Before({ tags: '@headfull' }, async function () {
   // eslint-disable-next-line no-console
-  console.log('headfull mode');
+  console.log('running in headfull mode');
+  cast(this.p).withOptions({ headless: false });
+});
+
+/**
+ * Before each scenario hook
+ */
+Before({ tags: '@live or @debug' }, async function () {
+  if (isCI) {
+    // eslint-disable-next-line no-console
+    console.log('tags @live and @debug are ignored on CI');
+    return;
+  }
+
+  // eslint-disable-next-line no-console
+  console.log('running in headfull mode when @live or @debug is set on the Scenario');
   cast(this.p).withOptions({ headless: false });
 });
 
@@ -90,7 +105,7 @@ After(async function (testCase: HookScenarioResult) {
   }
 
   if (this.p) {
-    cast(this.p).close();
+    await cast(this.p).close();
   }
 });
 
