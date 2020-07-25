@@ -16,7 +16,7 @@ Background: Open Form Component
 #   - filter tests to run on CI
 #   - change the execution behavior of the scenario (@live or @debug or @ignore)
 #   - in a dedicated before/after hook in the step file where steps are defined
-@live
+
 Scenario: Submit a Form
     Given I input "foo.bar@baz.com" in field "Email"
     And I input "don't tel !!" in field "Password"
