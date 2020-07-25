@@ -6,7 +6,7 @@ function shouldKeepError(pageError: Error): boolean {
     return false;
   }
 
-  if (pageError && pageError.message && pageError.message.includes('carbon.js')) {
+  if (pageError && pageError.stack && pageError.stack.includes('carbon.js')) {
     return false;
   }
 
