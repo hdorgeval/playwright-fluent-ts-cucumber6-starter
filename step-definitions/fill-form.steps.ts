@@ -44,12 +44,12 @@ When('I submit the form', async function () {
   await cast(this.p).runStory(submitForm);
 });
 
-Then('the form should be submitted with {string} = {string} in the Query String', async function (
-  key: string,
-  value: string,
-) {
-  await cast(this.p).runStory(FormShouldBeSubmittedWithQueryParam, { key, value });
-});
+Then(
+  'the form should be submitted with {string} = {string} in the Query String',
+  async function (key: string, value: string) {
+    await cast(this.p).runStory(FormShouldBeSubmittedWithQueryParam, { key, value });
+  },
+);
 
 /**
  * Before each scenario hook
