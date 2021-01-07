@@ -36,7 +36,7 @@
     "minimist": "1.2.5",
     "multiple-cucumber-html-reporter": "1.18.0",
     "playwright": "1.7.1",
-    "playwright-fluent": "1.16.0",
+    "playwright-fluent": "1.16.1",
     "rimraf": "3.0.2",
     "ts-node": "9.1.0",
     "typescript": "4.1.2"
