@@ -1,12 +1,28 @@
 import { World } from 'cucumber';
 import { StoryWithProps } from 'playwright-fluent';
 
+const stackTraceErrorsToIgnore = ['carbon.js', 'rate limit exceeded'];
+function shouldIgnoreErrorByStacktrace(pageError: Error): boolean {
+  if (pageError.stack) {
+    return stackTraceErrorsToIgnore.some((fragment) => pageError.stack?.includes(fragment));
+  }
+  return false;
+}
+
+const messageErrorsToIgnore = ['foobar'];
+function shouldIgnoreErrorByMessage(pageError: Error): boolean {
+  if (pageError?.message) {
+    return messageErrorsToIgnore.some((fragment) => pageError.message.includes(fragment));
+  }
+  return false;
+}
+
 function shouldKeepError(pageError: Error): boolean {
-  if (pageError && pageError.message && pageError.message.includes('foobar')) {
+  if (shouldIgnoreErrorByStacktrace(pageError)) {
     return false;
   }
 
-  if (pageError && pageError.stack && pageError.stack.includes('carbon.js')) {
+  if (shouldIgnoreErrorByMessage(pageError)) {
     return false;
   }
 
