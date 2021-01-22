@@ -1,6 +1,6 @@
 import * as reporter from 'cucumber-html-reporter';
 
-const options = {
+const options: reporter.Options = {
   // theme: 'bootstrap', hierarchy
   theme: 'hierarchy',
   jsonFile: 'reports/cucumber-report.json',
