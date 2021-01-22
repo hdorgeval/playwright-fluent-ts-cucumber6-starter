@@ -37,7 +37,7 @@
     "is-ci": "2.0.0",
     "minimist": "1.2.5",
     "multiple-cucumber-html-reporter": "1.18.0",
-    "playwright": "1.7.1",
+    "playwright": "1.8.0",
     "playwright-fluent": "1.18.0",
     "rimraf": "3.0.2",
     "ts-node": "9.1.1",
