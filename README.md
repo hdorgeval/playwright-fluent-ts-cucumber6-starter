@@ -54,6 +54,10 @@ The browser will stay opened at the end of the tests execution.
   - all failed requests if any
   - the last ten requests
 
+## To view the steps usage
+
+* run the command `npm run steps-usage`.
+
 ## To create a new step
 
 * first write the Given/When/Then sentence:
