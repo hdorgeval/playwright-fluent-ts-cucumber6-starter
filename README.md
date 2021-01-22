@@ -41,7 +41,7 @@ The browser will stay opened at the end of the tests execution.
 
 * tag the scenario with `@ignore`
 
-## To check for typescript and linting errors
+## To check for typescript, linting and gherkin errors
 
 * run the command `npm run build`.
 
