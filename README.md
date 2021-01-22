@@ -5,6 +5,8 @@
 
 Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in TypeScript language.
 
+*!!! Use this template only with `cucumber-js v6`: do not update cucumber-js dependencies to the v7 versions. If you want to use `cucumber-js v7` please use this [template](https://github.com/hdorgeval/playwright-fluent-ts-cucumber7-starter) !!!*
+
 ## After cloning the repo
 
 * run the command `npm install`.
