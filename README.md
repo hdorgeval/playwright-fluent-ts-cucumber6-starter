@@ -14,7 +14,13 @@ Starter project to write E2E tests with `cucumber-js` and `playwright-fluent` in
 ## To execute the tests locally
 
 * run the command `npm test`.
+  - tests will run by default with the chromium version installed by `playwright`
 
+## To execute the tests on a specific browser
+
+* to run the tests with `webkit` : `npm run test-webkit`
+* to run the tests with `firefox` : `npm run test-firefox`
+* to run the tests with `chrome` : `npm run test-chrome`
 ## To debug a scenario in Visual Studio Code
 
 * tag the scenario with `@debug`
