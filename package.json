@@ -18,6 +18,9 @@
     "multiple-report": "ts-node reporters/multiple-cucumber-html-reporter.ts",
     "snippets": "node ./node_modules/cucumber/bin/cucumber-js features/**/*.feature --dry-run --require world/custom-world.ts --require step-definitions/**/*.ts --require hooks/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format snippets --tags \"@live or @snippet \"  ",
     "test": "npm run cucumber",
+    "test-webkit": "npm test -- -- --browser=webkit",
+    "test-firefox": "npm test -- -- --browser=firefox",
+    "test-chrome": "npm test -- -- --browser=chrome",
     "tsc-init": "tsc --init",
     "tsc": "tsc"
   },

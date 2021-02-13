@@ -1,3 +1,4 @@
-export * from './report-page-errors.stories';
+export * from './report-browser.stories';
 export * from './report-failed-requests.stories';
+export * from './report-page-errors.stories';
 export * from './report-recorded-requests.stories';

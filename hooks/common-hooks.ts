@@ -1,4 +1,10 @@
-import { reportFailedRequests, reportPageErrors, reportRecordedRequests } from '../stories';
+import {
+  reportBrowserInfo,
+  reportFailedRequests,
+  reportPageErrors,
+  reportRecordedRequests,
+} from '../stories';
+import { CustomWorld } from '../world';
 import {
   Before,
   BeforeAll,
@@ -28,8 +34,14 @@ BeforeAll(async function () {
  * Before each scenario hook
  */
 Before(async function () {
+  const browser = (this as CustomWorld).cliArgs.browser || 'chromium';
+
+  // eslint-disable-next-line no-console
+  console.log(`Will run with browser ${browser}`);
+  this.attach(`Selected Browser: ${browser}`);
+
   this.p = new PlaywrightFluent()
-    .withBrowser('chromium')
+    .withBrowser(browser)
     .recordPageErrors()
     .recordFailedRequests()
     .withCursor()
@@ -88,6 +100,10 @@ Before({ tags: '@live or @debug' }, async function () {
   cast(this.p).withOptions({ headless: false });
 });
 
+/**
+ * After each scenario hook
+ * Will be executed last => After methods execute in reverse order
+ */
 After(async function (testCase: HookScenarioResult) {
   if (testCase.result.status === Status.FAILED && this.p) {
     const screenshot: string = await cast(this.p).takeFullPageScreenshotAsBase64();
@@ -109,10 +125,27 @@ After(async function (testCase: HookScenarioResult) {
   }
 });
 
+/**
+ * After each scenario hook
+ */
+After(async function () {
+  await cast(this.p).runStory(reportBrowserInfo, this);
+});
+
+/**
+ * After each scenario hook
+ */
+After(async function () {
+  await cast(this.p).runStory(reportRecordedRequests, this);
+});
+
+/**
+ * After each scenario hook
+ * Will be executed first => After methods execute in reverse order
+ */
 After(async function () {
   await cast(this.p).runStory(reportPageErrors, this);
   await cast(this.p).runStory(reportFailedRequests, this);
-  await cast(this.p).runStory(reportRecordedRequests, this);
 });
 
 AfterAll(async function () {
