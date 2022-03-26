@@ -38,7 +38,7 @@
     "cucumber-pretty": "6.0.0",
     "expect": "26.6.2",
     "is-ci": "3.0.0",
-    "minimist": "1.2.5",
+    "minimist": "1.2.6",
     "multiple-cucumber-html-reporter": "1.18.0",
     "playwright": "1.8.1",
     "playwright-fluent": "1.18.2",
